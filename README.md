@@ -6,7 +6,9 @@ pip版本需要和当前python版本对应，升级pip的方法：`python -m pip
 
 black: python的自动化格式代码插件[repo](https://github.com/psf/black)
 
-安装black: /usr/bin/python -m pip install -U black --user
+安装black: `/usr/bin/python -m pip install -U black --user`
+
+`/usr/local/opt/python@3.9/bin/python3.9 -m pip install -U black --user`
 
 并且在vscode中设置format on save 和 python扩展里的formatting provider
 
