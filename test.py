@@ -1,21 +1,37 @@
 from turtle import *
 
-color = ["red", "yellow", "blue", "green", "pink", "purple"]
+bar_len = 500
+bar_circle_radius = 25
 
-setup(800, 600)
-pensize(30)
 
-penup()
-goto(-330, -250)
+def init_bar(color="black"):
+    speed(0)
+    hideturtle()
+    pencolor(color)
+    penup()
+    # 居中
+    goto(-(bar_len / 2), -(bar_circle_radius / 2))
+    pendown()
 
-pendown()
 
-for i in range(6):
-    pencolor(color[i])
-    circle(40, 80)
-    circle(-40, 80)
+def draw_bar():
+    circle(bar_circle_radius, -180)
+    bk(bar_len)
+    circle(bar_circle_radius, -180)
+    bk(bar_len)
+    circle(bar_circle_radius, -90)
+    left(90)
+    penup()
+    fd(bar_circle_radius)
+    pendown()
 
-circle(40, 80 / 2)
-fd(50)
+
+init_bar()
+draw_bar()
+
+speed(1)
+pensize(bar_circle_radius * 2 - bar_circle_radius / 5)
+pencolor("red")
+fd(bar_len)
 
 done()
