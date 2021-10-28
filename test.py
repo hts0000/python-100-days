@@ -1,37 +1,27 @@
-from turtle import *
+from random import random
+import turtle as t
+from math import sqrt
 
-bar_len = 500
-bar_circle_radius = 25
-
-
-def init_bar(color="black"):
-    speed(0)
-    hideturtle()
-    pencolor(color)
-    penup()
-    # 居中
-    goto(-(bar_len / 2), -(bar_circle_radius / 2))
-    pendown()
-
-
-def draw_bar():
-    circle(bar_circle_radius, -180)
-    bk(bar_len)
-    circle(bar_circle_radius, -180)
-    bk(bar_len)
-    circle(bar_circle_radius, -90)
-    left(90)
-    penup()
-    fd(bar_circle_radius)
-    pendown()
-
-
-init_bar()
-draw_bar()
-
-speed(1)
-pensize(bar_circle_radius * 2 - bar_circle_radius / 5)
-pencolor("red")
-fd(bar_len)
-
-done()
+darts = 10000
+hits = 0
+t.penup()
+t.speed(0)
+t.tracer(False)
+for _ in range(darts):
+    x = random()
+    y = random()
+    dist = sqrt(x ** 2 + y ** 2)
+    t.goto(x * 300, y * 300)
+    t.pendown()
+    if dist <= 1.0:
+        hits += 1
+        t.dot(2, "red")
+    else:
+        t.dot(2, "blue")
+    t.penup()
+t.tracer(True)
+print(4 * (hits / darts))
+t.goto(110, -30)
+pi = "pi=" + str(4 * (hits / darts))
+t.write(pi, font=("consolas", 15, "normal"))
+t.exitonclick()
